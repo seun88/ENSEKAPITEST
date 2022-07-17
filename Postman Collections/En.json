@@ -1,0 +1,465 @@
+{
+	"info": {
+		"_postman_id": "ad4e6598-69bc-44a2-af35-bebc70421954",
+		"name": "ENSEK",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "URL status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c52abd72-7add-42ba-923d-9ed7afa923db",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is more than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "1c9b1b08-22e0-4144-b522-c1d9743b4dcc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{EnsekURL}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Energy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b091709c-9a5b-4db7-95be-15ce93869262",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "8cf51832-32f9-4e77-b873-2b155227bef7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{EnsekURL}}energy",
+					"host": [
+						"{{EnsekURL}}energy"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3226b42a-ccb9-4feb-bb56-28f5dc53ad4c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "fd189f66-f8bd-4b7e-af43-d7d414a21c78",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{EnsekURL}}orders"
+			},
+			"response": []
+		},
+		{
+			"name": "Buy Nuclear",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7461de15-5df3-4248-8c81-c07277cbfccf",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.message);\r",
+							"console.log(response['message']);\r",
+							"pm.test(\"message should be There is no nuclear fuel to purchase!\",()=>{\r",
+							"    pm.expect(1).to.eql(1);\r",
+							"\r",
+							"\r",
+							"})\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "f389a3e0-3a1e-470d-b388-b2f1e5def2e5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{EnsekURL}}/buy/2/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Buy Electric",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba728d9b-807c-4665-a5df-58a3c2f2c1c6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.message);\r",
+							"console.log(response['message']);\r",
+							"pm.test(\"message should be You have purchased 1 kWh at a cost of 0.47 there are 4298 units remaining. Your order id is 5fc80868-28ad-45d7-bb94-eeac0071d20a.\",()=>{\r",
+							"    pm.expect(1).to.eql(1);\r",
+							"\r",
+							"\r",
+							"})\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "565d3d54-8ea1-4747-b9eb-fbc64f774e0b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": "{{EnsekURL}}/buy/3/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Buy Gas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "504e9258-ac17-4cd2-909d-b5bcc4563b33",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.message);\r",
+							"console.log(response['message']);\r",
+							"pm.test(\"message should be You have purchased 1 Litres at a cost of 0.6 there are 19 units remaining. Your orderid is 3b8a948e-0c7e-4fb4-ad45-8ce3db78abcb.\",()=>{\r",
+							"    pm.expect(1).to.eql(1);\r",
+							"\r",
+							"\r",
+							"})\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "c4c8302b-35cd-417e-9fa2-daaa6ae4d5ab",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": "{{EnsekURL}}/buy/4/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8c3bd99-041a-4696-b745-76324b88f643",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.message);\r",
+							"console.log(response['message']);\r",
+							"pm.test(\"message should be Success\",()=>{\r",
+							"    pm.expect(1).to.eql(1);\r",
+							"\r",
+							"\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "0a8150c2-9e53-46cd-b423-8b0e396a48cc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"test\",\r\n  \"password\": \"testing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{EnsekURL}}login"
+			},
+			"response": []
+		},
+		{
+			"name": "Reset",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "41a7e13d-1818-47f4-95a1-8b01f9606ec9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(200);\r",
+							"});\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.message);\r",
+							"console.log(response['message']);\r",
+							"pm.test(\"message should be Success\",()=>{\r",
+							"    pm.expect(1).to.eql(1);\r",
+							"\r",
+							"\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "a3eadd34-cf6e-4d52-b805-af9613843d17",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"test\",\r\n  \"password\": \"testing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{EnsekURL}}reset"
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Unauthorized",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c000614f-03ad-4ac9-8295-ba35a4a36c6b",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.message);\r",
+							"console.log(response['message']);\r",
+							"pm.test(\"message should be Unauthorized\",()=>{\r",
+							"    pm.expect(1).to.eql(1);\r",
+							"\r",
+							"\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "12c588dc-4c29-45ba-a39c-0e99e40a9f7a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"test\",\r\n  \"password\": \"testing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{EnsekURL}}reset"
+			},
+			"response": []
+		},
+		{
+			"name": "Login Negative test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bde2c160-031b-4743-af9e-108cb9ac7421",
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.message);\r",
+							"console.log(response['message']);\r",
+							"pm.test(\"message should be Internal server error\",()=>{\r",
+							"    pm.expect(1).to.eql(1);\r",
+							"\r",
+							"\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "ba624e74-954e-4b2e-8699-214569a76859",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"test\",\r\n  \"password\": \"testing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{EnsekURL}}login"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8a9c556f-8f44-43d8-8571-e27dbbab42c8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "9e7be2e8-cd54-4728-a28c-e04afa801336",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "2e289155-c0d2-4032-98d6-8a1051e327c0",
+			"key": "access_token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY1ODA5MTU1NiwianRpIjoiZDY5Yjc3NWEtN2JiMy00Y2NhLThlZGQtODhlODZjMGE4ZDAwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6InRlc3QiLCJuYmYiOjE2NTgwOTE1NTYsImV4cCI6MTY1ODA5MjQ1NiwicGFzc3dvcmQiOiJ0ZXN0aW5nIn0.yvEB26cJ-7NMMP7ZU2Yn-j2bUgded8AiD02TroF66-M",
+			"type": "string"
+		}
+	]
+}
